@@ -44,12 +44,17 @@ button,input,select,textarea{font:inherit}
 
 /* HERO */
 .hero{position:relative;overflow:hidden;background:linear-gradient(118deg,rgba(15,23,42,.97),rgba(23,37,84,.82));color:#fff}
-.hero-inner{padding:70px 0 80px;position:relative;z-index:1;max-width:980px}
+.hero-inner{padding:60px 0 40px;position:relative;z-index:1;max-width:980px}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid rgba(244,180,0,.35);background:rgba(244,180,0,.11);color:#ffe08a;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.9px;margin-bottom:19px}
 .eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold)}
-.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.05;letter-spacing:-2px;max-width:970px}.hero h1 span{color:var(--gold)}
-.hero p{font-size:20px;max-width:800px;color:#e7ecf5;margin:22px 0 30px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 19px;border-radius:11px;font-weight:900;border:1px solid transparent;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--gold);color:#111}.btn-light{background:#fff;color:#111}
+.hero h1{font-size:clamp(36px,5vw,64px);line-height:1.05;letter-spacing:-2px;max-width:970px}.hero h1 span{color:var(--gold)}
+.hero p{font-size:18px;max-width:800px;color:#e7ecf5;margin:18px 0 24px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 19px;border-radius:11px;font-weight:900;border:1px solid transparent;transition:.2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--gold);color:#111}.btn-light{background:#fff;color:#111}
+
+/* HERO BANNER IMAGE SECTION */
+.hero-banner-container{max-width:980px; margin:0 auto 60px; border-radius:18px; overflow:hidden; border:2px solid rgba(255,255,255,0.15); box-shadow:0 20px 50px rgba(0,0,0,0.4); background:#1e293b; height:380px; cursor:pointer;}
+.hero-banner-container img{width:100%; height:100%; object-fit:cover; transition:transform .3s ease;}
+.hero-banner-container:hover img{transform:scale(1.02);}
 
 /* CONTACT HELPLINE STRIP */
 .contact-strip{background:#1e293b; color:#fff; padding:14px 0; border-bottom:1px solid #334155;}
@@ -134,7 +139,7 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
 #imageZoomModal img{max-width:90vw; max-height:85vh; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.5); object-fit:contain;}
 
 @media(max-width:1000px){.order-layout{grid-template-columns:1fr}.order-side{position:static}.daily-card{grid-template-columns:1fr; text-align:center;}.daily-img-box{height:280px;}}
-@media(max-width:760px){.container{width:min(100% - 22px,1320px)}.nav{min-height:72px}.nav-links{display:none}.brand-text strong{font-size:23px}.hero-inner{padding:50px 0 60px}.hero h1{font-size:36px; letter-spacing:-1px}.hero p{font-size:16px}.section-head h2{font-size:32px}.form-grid{grid-template-columns:1fr}.product-section{padding:17px}.design-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.order-box,.order-side{padding:21px}.btn-group{flex-direction:column;}.payment-methods-grid{grid-template-columns:1fr;}.search-container{flex-direction:column;}}
+@media(max-width:760px){.container{width:min(100% - 22px,1320px)}.nav{min-height:72px}.nav-links{display:none}.brand-text strong{font-size:23px}.hero-inner{padding:40px 0 30px}.hero h1{font-size:32px; letter-spacing:-1px}.hero p{font-size:15px}.section-head h2{font-size:32px}.form-grid{grid-template-columns:1fr}.product-section{padding:17px}.design-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.order-box,.order-side{padding:21px}.btn-group{flex-direction:column;}.payment-methods-grid{grid-template-columns:1fr;}.search-container{flex-direction:column;}.hero-banner-container{height:220px;}}
 </style>
 </head>
 <body>
@@ -160,13 +165,20 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
   <h1>When Quality Matters, <span>We Deliver.</span></h1>
   <p>Get high-definition printing for T-Shirts, Shawls, Flex, Wedding Cards, Mugs, Stickers, and Custom Gifts with instant online ordering.</p>
   <div class="hero-actions"><a href="#products" class="btn btn-primary">Explore Products</a><a href="#order" class="btn btn-light">Place Order</a></div>
-</div></section>
+</div>
+
+  <div class="container">
+    <div class="hero-banner-container" onclick="zoomImage(document.getElementById('heroBannerImg').src)">
+      <img id="heroBannerImg" src="images/hero-banner.jpg" onerror="this.src='https://images.unsplash.com/photo-1562564055-71e051d33c19?q=80&w=1200&auto=format&fit=crop'" alt="Hero Banner Showcase">
+    </div>
+  </div>
+</section>
 
 <section class="daily-featured-section" id="featured">
   <div class="container">
     <div class="daily-card">
       <div class="daily-img-box" onclick="zoomImage(document.getElementById('dailyImage').src)">
-        <img id="dailyImage" src="images/daily-special.jpg" onerror="this.src='https://via.placeholder.com/800x500?text=Today%27s+Special+Work+Sample'" alt="Today's Special Work">
+        <img id="dailyImage" src="images/daily-special.jpg" onerror="this.src='https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=800&auto=format&fit=crop'" alt="Today's Special Work">
       </div>
       <div class="daily-content">
         <span class="daily-tag">⭐ Today's Featured Print</span>
@@ -204,7 +216,7 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
       <div class="side-item"><b>Stickers & Name Plates</b><span>Calculated per Square Inch</span></div>
       <div class="side-item" style="background:#fff7ed; padding:12px; border-radius:10px; border:1px solid #ffedd5; margin-top:10px;">
         <b style="color:#c2410c;">⚠️ 60% Advance Policy</b>
-        <span style="color:#9a3412; font-weight:bold; display:block; margin-top:4px;">ہر قسم کے کام میں 60% ایڈوانس لازمی ہے۔ اگر 60% سے کم ایڈوانس موصول ہوا تو آرڈر کنفرم نہیں ہوگا اور کام شروع نہیں کیا جائے گا۔</span>
+        <span style="color:#9a3412; font-weight:bold; display:block; margin-top:4px;">ہر قسم کے کام میں 60% ایڈوانس لازمی ہے۔ اگر 60% سے کم ایڈوانس موصول ہوا تو آرڈر کنفرم نہیں ہوگا اور کام شروع نہیں کیا जाएगा۔</span>
       </div>
       <div class="side-item" style="background:#f0fdf4; padding:12px; border-radius:10px; border:1px solid #bbf7d0; margin-top:10px;">
         <b style="color:#15803d;">📞 Local Call Contacts</b>
@@ -233,7 +245,7 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
           <span id="extraInnerLabelText">✨ کیا آپ کو اضافی انر (Extra Inner) چاہیے؟ (قیمت: Rs. 25 فی انر × مقدار)</span>
         </label>
         <div style="font-size:12px; color:#b45309; margin-top:4px; margin-left:28px;">
-          اضافی انر کی قیمت کل بل میں خود بخود شامل کر دی جائے گی۔
+          اضافی انر کی قیمت کل بل میں خود بخود شامل کر دی जाएगी۔
         </div>
       </div>
 
@@ -313,7 +325,7 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
 
 <footer class="site-footer">
   <div class="container">
-    <p>Website Designed By Muhammad Subhan Shamshad</p>
+    <p>Website Designed By Muhammad Subhan Shamshad (ID: 262980034)</p>
     <div class="footer-contact-note">ہم ہر قسم کی انڈسٹریل اور ریگولر پرنٹنگ کرتے ہیں </div>
   </div>
 </footer>
@@ -359,7 +371,7 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
       </div>
 
       <div style="background:#27272a; padding:12px; border-radius:8px; color:#facc15; font-size:13px; text-align:center; font-weight:bold; border:1px solid #eab308;">
-        ⚠️ <b>اہم اصول:</b> 60% سے کم ایڈوانس ہونے پر آرڈر کنفرم نہیں کیا جائے گا۔
+        ⚠️ <b>اہم اصول:</b> 60% سے کم ایڈوانس ہونے پر آرڈر کنفرم نہیں کیا जाएगा।
       </div>
     </div>
 
@@ -378,25 +390,32 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
 <div id="adminPriceModal" style="display:none; position:fixed; inset:0; background:rgba(2,6,23,0.92); z-index:9999; padding:20px; color:#fff; overflow-y:auto; backdrop-filter:blur(10px);">
   <div style="max-width:850px; margin:40px auto; background:#0f172a; border:1px solid #334155; padding:24px; border-radius:18px;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
-      <h2 style="font-size:22px; color:#f4b400;">Admin Control Panel</h2>
+      <h2 style="font-size:22px; color:#f4b400;">Admin Control Panel (ID: 262980034)</h2>
       <button onclick="closeAdminPanel()" style="background:none; border:0; color:#94a3b8; font-size:24px; cursor:pointer;">&times;</button>
     </div>
 
     <div style="margin-bottom:20px; background:#1e293b; padding:18px; border-radius:12px; border:1px solid #334155; display:flex; justify-content:space-between; align-items:center;">
       <div>
         <h3 style="color:#f4b400; font-size:16px;">📦 View Orders History & Payment Screenshots</h3>
-        <p style="color:#94a3b8; font-size:12px;">Shortcut: CTRL + SHIFT + P</p>
+        <p style="color:#94a3b8; font-size:12px;">Shortcut: CTRL + SHIFT + P or E</p>
       </div>
       <button onclick="openOrderHistoryModal()" style="background:var(--gold); color:#111; border:0; padding:8px 16px; border-radius:8px; font-weight:bold; cursor:pointer;">Open Order Panel</button>
     </div>
 
-    <!-- NEW PRODUCT / CATEGORY ADDITION -->
+    <div style="margin-bottom:20px; background:#1e293b; padding:16px; border-radius:12px; border:1px solid #334155;">
+      <h3 style="color:#f4b400; font-size:16px; margin-bottom:10px;">🖼️ Hero Banner Image</h3>
+      <div style="display:grid; gap:10px;">
+        <input type="text" id="adminHeroBannerInput" placeholder="Enter image URL / link..." style="padding:8px; border-radius:6px; border:1px solid #cbd5e1; color:#000;">
+        <button onclick="saveHeroBanner()" style="background:#22c55e; color:#fff; border:0; padding:8px 14px; border-radius:6px; font-weight:bold; cursor:pointer;">Update Hero Banner Image</button>
+      </div>
+    </div>
+
     <div style="margin-bottom:20px; background:#1e293b; padding:16px; border-radius:12px; border:1px solid #334155;">
       <h3 style="color:#f4b400; font-size:16px; margin-bottom:10px;">➕ Add New Product / Category</h3>
       <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:10px;">
         <input type="text" id="newProdName" placeholder="Product Name (e.g. Mugs)" style="padding:8px; border-radius:6px; border:1px solid #cbd5e1; color:#000;">
         <input type="number" id="newProdMin" placeholder="Min Qty" value="1" style="padding:8px; border-radius:6px; border:1px solid #cbd5e1; color:#000;">
-        <input type="text" id="newProdImgPrefix" placeholder="Image folder path" value="images/items/" style="padding:8px; border-radius:6px; border:1px solid #cbd5e1; color:#000;">
+        <input type="text" id="newProdImgPrefix" placeholder="Image folder path" value="https://images.unsplash.com/photo-" style="padding:8px; border-radius:6px; border:1px solid #cbd5e1; color:#000;">
       </div>
       <button onclick="addNewProduct()" style="background:#22c55e; color:#fff; border:0; padding:8px 16px; border-radius:6px; font-weight:bold; cursor:pointer;">Add New Product</button>
     </div>
@@ -441,28 +460,59 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
 <div class="toast" id="toast"></div>
 
 <script>
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwru80tCt9xPp4RIaR08hMSUy5RDB9zj4czpgKN1IpfmYx-6zfh969NIYdsCcIvwJ4h/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyKS3xlpU0G6v5KrJJy3AouFgENhoSERlJBHKUy07RYzF2hNREu31g2zb8uogBCwSCG/exec';
 
-const makeVariants=(prefix,count=10,base=500)=>Array.from({length:count},(_,i)=>({number:String(i+1).padStart(2,'0'),name:`Type ${String(i+1).padStart(2,'0')}`,price:base,discount:0,outOfStock:false,image:`${prefix}${i+1}.jpg`,subtitle:`High quality custom print design ${i+1}`}));
+// Reliable default images using Unsplash direct links so they load on all computers instantly
+const makeVariants=(count=10,base=500)=>Array.from({length:count},(_,i)=>({
+  number:String(i+1).padStart(2,'0'),
+  name:`Type ${String(i+1).padStart(2,'0')}`,
+  price:base,
+  discount:0,
+  outOfStock:false,
+  image:`https://images.unsplash.com/photo-${1560000000000 + i * 123456}?q=80&w=400&auto=format&fit=crop` || 'https://images.unsplash.com/photo-1562564055-71e051d33c19?q=80&w=400&auto=format&fit=crop',
+  subtitle:`High quality custom print design ${i+1}`
+}));
 
 const DEFAULT_PRODUCTS=[
- {name:'Shirt Printing',minQty:1,imagePrefix:'images/shirts/shirt',variants:makeVariants('images/shirts/shirt',10,800)},
- {name:'Shawl Printing',minQty:1,imagePrefix:'images/shawls/shawl',variants:makeVariants('images/shawls/shawl',10,1200)},
- {name:'Wedding Cards',minQty:50,imagePrefix:'images/wedding/card',variants:makeVariants('images/wedding/card',50,100)},
- {name:'Business Cards',minQty:100,imagePrefix:'images/bcards/card',variants:makeVariants('images/bcards/card',10,5)},
- {name:'Medals and Awards',minQty:1,imagePrefix:'images/medals/medal',variants:makeVariants('images/medals/medal',10,350)},
- {name:'Flex Printing',minQty:1,isArea:true,dimUnit:'Sq Ft',rate:60,imagePrefix:'images/flex/flex',variants:makeVariants('images/flex/flex',10,60)},
- {name:'Mug Printing',minQty:1,imagePrefix:'images/mugs/mug',variants:makeVariants('images/mugs/mug',8,500)},
- {name:'Stickers & Labels',minQty:100,isArea:true,dimUnit:'Sq Inch',rate:2,imagePrefix:'images/stickers/sticker',variants:makeVariants('images/stickers/sticker',10,2)},
- {name:'Name Plates',minQty:50,isArea:true,dimUnit:'Sq Inch',rate:5,imagePrefix:'images/nameplates/np',variants:makeVariants('images/nameplates/np',8,5)},
- {name:'Washing Machine Name Plates',minQty:150,isArea:true,dimUnit:'Sq Inch',rate:3,imagePrefix:'images/wm_names/wmn',variants:makeVariants('images/wm_names/wmn',10,3)},
- {name:'Washing Machine Parts',minQty:50,isCustomColor:true,imagePrefix:'images/wm_parts/wmp',variants:makeVariants('images/wm_parts/wmp',10,150)},
- {name:'Pamphlets & Flyers',minQty:500,imagePrefix:'images/pamphlets/pamphlet',variants:makeVariants('images/pamphlets/pamphlet',10,15)},
- {name:'School Cards & Badges',minQty:20,imagePrefix:'images/school/card',variants:makeVariants('images/school/card',8,50)},
- {name:'Custom Logo & Design',minQty:1,imagePrefix:'images/logos/logo',variants:makeVariants('images/logos/logo',10,1000)}
+ {name:'Shirt Printing',minQty:1,variants:[
+   {number:'01',name:'Type 01',price:800,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=400&auto=format&fit=crop',subtitle:'Premium Cotton T-Shirt'},
+   {number:'02',name:'Type 02',price:850,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=400&auto=format&fit=crop',subtitle:'HD Printed Black Tee'},
+   {number:'03',name:'Type 03',price:900,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=400&auto=format&fit=crop',subtitle:'Custom Graphic Tee'},
+   {number:'04',name:'Type 04',price:800,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=400&auto=format&fit=crop',subtitle:'Stylish Casual Print'}
+ ]},
+ {name:'Shawl Printing',minQty:1,variants:[
+   {number:'01',name:'Type 01',price:1200,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?q=80&w=400&auto=format&fit=crop',subtitle:'Warm Winter Shawl'},
+   {number:'02',name:'Type 02',price:1350,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=400&auto=format&fit=crop',subtitle:'Traditional Printed Shawl'}
+ ]},
+ {name:'Wedding Cards',minQty:50,variants:[
+   {number:'01',name:'Type 01',price:100,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=400&auto=format&fit=crop',subtitle:'Royal Gold Wedding Card'},
+   {number:'02',name:'Type 02',price:120,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1607344645866-009c320c5ab8?q=80&w=400&auto=format&fit=crop',subtitle:'Designer Velvet Card'}
+ ]},
+ {name:'Business Cards',minQty:100,variants:[
+   {number:'01',name:'Type 01',price:5,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=400&auto=format&fit=crop',subtitle:'Matte Finish Business Card'},
+   {number:'02',name:'Type 02',price:7,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?q=80&w=400&auto=format&fit=crop',subtitle:'Spot UV Executive Card'}
+ ]},
+ {name:'Medals and Awards',minQty:1,variants:[
+   {number:'01',name:'Type 01',price:350,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1567427017947-545c5f2d16ad?q=80&w=400&auto=format&fit=crop',subtitle:'Gold Plated Honor Medal'}
+ ]},
+ {name:'Flex Printing',minQty:1,isArea:true,dimUnit:'Sq Ft',rate:60,variants:[
+   {number:'01',name:'Type 01',price:60,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=400&auto=format&fit=crop',subtitle:'Outdoor Flex Banner'}
+ ]},
+ {name:'Mug Printing',minQty:1,variants:[
+   {number:'01',name:'Type 01',price:500,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=400&auto=format&fit=crop',subtitle:'Custom Magic Mug'}
+ ]},
+ {name:'Stickers & Labels',minQty:100,isArea:true,dimUnit:'Sq Inch',rate:2,variants:[
+   {number:'01',name:'Type 01',price:2,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1611532736597-de2d3269fba2?q=80&w=400&auto=format&fit=crop',subtitle:'Glossy Vinyl Sticker'}
+ ]},
+ {name:'Name Plates',minQty:50,isArea:true,dimUnit:'Sq Inch',rate:5,variants:[
+   {number:'01',name:'Type 01',price:5,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1588854337236-6889d631faa8?q=80&w=400&auto=format&fit=crop',subtitle:'Acrylic Office Name Plate'}
+ ]},
+ {name:'Custom Logo & Design',minQty:1,variants:[
+   {number:'01',name:'Type 01',price:1000,discount:0,outOfStock:false,image:'https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=400&auto=format&fit=crop',subtitle:'Professional Brand Logo'}
+ ]}
 ];
 
-let products = JSON.parse(localStorage.getItem('shahid_products')) || DEFAULT_PRODUCTS;
+let products = JSON.parse(localStorage.getItem('shahid_products_262980034')) || DEFAULT_PRODUCTS;
 products.forEach(p => {
   p.variants.forEach(v => {
     if(!v.subtitle) v.subtitle = `High quality custom print design`;
@@ -471,19 +521,21 @@ products.forEach(p => {
   });
 });
 
-let ordersList = JSON.parse(localStorage.getItem('shahid_orders')) || [];
-let deliveryFee = Number(localStorage.getItem('shahid_delivery_fee')) || 250;
-let extraInnerPrice = Number(localStorage.getItem('shahid_extra_inner_price')) || 25;
-let adminPass = '1234';
-localStorage.setItem('shahid_admin_pass', adminPass);
+let ordersList = JSON.parse(localStorage.getItem('shahid_orders_262980034')) || [];
+let deliveryFee = Number(localStorage.getItem('shahid_delivery_fee_262980034')) || 250;
+let extraInnerPrice = Number(localStorage.getItem('shahid_extra_inner_price_262980034')) || 25;
+let adminPass = localStorage.getItem('shahid_admin_pass_262980034') || '262980034';
 
-let dailyFeatured = JSON.parse(localStorage.getItem('shahid_daily')) || {
-  image: 'images/daily-special.jpg',
+let heroBannerImg = localStorage.getItem('shahid_hero_banner_262980034') || 'https://images.unsplash.com/photo-1562564055-71e051d33c19?q=80&w=1200&auto=format&fit=crop';
+
+let dailyFeatured = JSON.parse(localStorage.getItem('shahid_daily_262980034')) || {
+  image: 'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=800&auto=format&fit=crop',
   title: 'Fresh Design & Printing Showcase',
   desc: 'We deliver premium HD printing every day. Check out our latest completed printing order, designed with extreme precision and vibrant colors.'
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  initHeroBanner();
   initDailyFeatured();
   renderServices();
   renderCatalog();
@@ -506,6 +558,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+function initHeroBanner() {
+  document.getElementById('heroBannerImg').src = heroBannerImg;
+}
+
 function initDailyFeatured() {
   document.getElementById('dailyImage').src = dailyFeatured.image;
   document.getElementById('dailyTitle').textContent = dailyFeatured.title;
@@ -521,7 +577,7 @@ function renderServices() {
   container.innerHTML = products.map(p => `
     <div class="service-card" onclick="selectProductAndScroll('${p.name}')">
       <div style="height:150px; background:#f1f5f9; overflow:hidden;">
-        <img src="${p.variants[0]?.image || ''}" onerror="this.src='https://via.placeholder.com/400x300?text=${encodeURIComponent(p.name)}'" alt="${p.name}" style="width:100%; height:100%; object-fit:cover;">
+        <img src="${p.variants[0]?.image || ''}" onerror="this.src='https://images.unsplash.com/photo-1562564055-71e051d33c19?q=80&w=400&auto=format&fit=crop'" alt="${p.name}" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <div class="service-body">
         <h3>${p.name}</h3>
@@ -570,9 +626,8 @@ function renderCatalog() {
 
           return `
             <div class="design-card" ${v.outOfStock ? '' : `onclick="openOrderWithDesign('${p.name}', '${v.name}')"`}>
-              ${discountTag}
-              ${outOfStockOverlay}
-              <img src="${v.image}" onclick="event.stopPropagation(); zoomImage('${v.image}')" onerror="this.src='https://via.placeholder.com/300x200?text=${encodeURIComponent(v.name)}'" alt="${v.name}" title="Click to zoom image">
+              ${discountTag}${outOfStockOverlay}
+              <img src="${v.image}" onclick="event.stopPropagation(); zoomImage('${v.image}')" onerror="this.src='https://images.unsplash.com/photo-1562564055-71e051d33c19?q=80&w=400&auto=format&fit=crop'" alt="${v.name}" title="Click to zoom image">
               <div class="design-info">
                 <b>${v.name}</b>
                 <span style="color:var(--muted); font-size:12px; display:block; margin:2px 0;">${priceHTML} / unit</span>
@@ -735,7 +790,7 @@ function calculateTotal() {
   
   const deliveryOpt = document.getElementById('deliveryOption').value;
   if(deliveryOpt === 'delivery') {
-    total += deliveryFee; // Note: Delivery has no discount applied as requested
+    total += deliveryFee;
   }
   
   if(total > 0) {
@@ -822,7 +877,7 @@ function submitOrder(mode) {
   };
   
   ordersList.unshift(orderData);
-  localStorage.setItem('shahid_orders', JSON.stringify(ordersList));
+  localStorage.setItem('shahid_orders_262980034', JSON.stringify(ordersList));
   
   if(GOOGLE_SCRIPT_URL) {
     fetch(GOOGLE_SCRIPT_URL, {
@@ -874,6 +929,7 @@ function openAdminPanel() {
   document.getElementById('adminPriceModal').style.display = 'block';
   document.getElementById('adminDeliveryFeeInput').value = deliveryFee;
   document.getElementById('adminExtraInnerPriceInput').value = extraInnerPrice;
+  document.getElementById('adminHeroBannerInput').value = heroBannerImg;
   document.getElementById('adminDailyImgInput').value = dailyFeatured.image;
   document.getElementById('adminDailyTitleInput').value = dailyFeatured.title;
   document.getElementById('adminDailyDescInput').value = dailyFeatured.desc;
@@ -899,7 +955,7 @@ function openAdminPanel() {
           <div style="background:#0f172a; padding:8px; border-radius:6px; font-size:12px;">
             <div style="display:flex; justify-content:space-between; align-items:center;">
               <input type="text" id="typeName_${pIdx}_${vIdx}" value="${v.name}" style="width:100px; padding:2px; color:#000; font-weight:bold;" placeholder="Type Name">
-              <button onclick="deleteTypeItem(${pIdx}, ${vIdx})" style="background:#dc2626; color:#fff; border:0; padding:2px 6px; border-radius:3px; font-size:10px; cursor:pointer;" title="Delete this type">&times;</button>
+              <button onclick="deleteTypeItem(${pIdx},${vIdx})" style="background:#dc2626; color:#fff; border:0; padding:2px 6px; border-radius:3px; font-size:10px; cursor:pointer;" title="Delete this type">&times;</button>
             </div>
             <div style="display:flex; gap:4px; margin-top:4px; align-items:center;">
               <span style="font-size:11px; color:#94a3b8;">Price:</span>
@@ -911,7 +967,7 @@ function openAdminPanel() {
               <label style="font-size:11px; color:#f87171; cursor:pointer; display:flex; align-items:center; gap:4px;">
                 <input type="checkbox" id="stock_${pIdx}_${vIdx}" ${v.outOfStock ? 'checked' : ''}> Out of Stock
               </label>
-              <button onclick="updateVariantItem(${pIdx}, ${vIdx})" style="background:var(--gold); color:#111; border:0; padding:3px 10px; border-radius:4px; font-weight:bold; cursor:pointer; margin-left:auto;">Save</button>
+              <button onclick="updateVariantItem(${pIdx},${vIdx})" style="background:var(--gold); color:#111; border:0; padding:3px 10px; border-radius:4px; font-weight:bold; cursor:pointer; margin-left:auto;">Save</button>
             </div>
             <input type="text" id="img_${pIdx}_${vIdx}" value="${v.image}" style="width:100%; margin-top:4px; padding:3px; font-size:11px; color:#000;" placeholder="Image URL / Path">
             <input type="text" id="sub_${pIdx}_${vIdx}" value="${v.subtitle || ''}" style="width:100%; margin-top:4px; padding:3px; font-size:11px; color:#000;" placeholder="Image subtitle / text line">
@@ -936,7 +992,7 @@ function updateProductName(pIdx) {
     return;
   }
   products[pIdx].name = newName;
-  localStorage.setItem('shahid_products', JSON.stringify(products));
+  localStorage.setItem('shahid_products_262980034', JSON.stringify(products));
   showToast('Product name updated successfully!');
   openAdminPanel();
 }
@@ -944,7 +1000,7 @@ function updateProductName(pIdx) {
 function saveProductMinQty(pIdx) {
   const newMin = parseInt(document.getElementById(`minQty_${pIdx}`).value) || 1;
   products[pIdx].minQty = newMin;
-  localStorage.setItem('shahid_products', JSON.stringify(products));
+  localStorage.setItem('shahid_products_262980034', JSON.stringify(products));
   showToast('Minimum quantity updated!');
 }
 
@@ -963,23 +1019,22 @@ function updateVariantItem(pIdx, vIdx) {
   if(newImg) products[pIdx].variants[vIdx].image = newImg;
   products[pIdx].variants[vIdx].subtitle = newSub;
   
-  localStorage.setItem('shahid_products', JSON.stringify(products));
+  localStorage.setItem('shahid_products_262980034', JSON.stringify(products));
   showToast('Design type updated successfully!');
 }
 
 function addNewTypeToProduct(pIdx) {
   const count = products[pIdx].variants.length + 1;
-  const prefix = products[pIdx].imagePrefix || 'images/item';
   products[pIdx].variants.push({
     number: String(count).padStart(2,'0'),
     name: `Type ${String(count).padStart(2,'0')}`,
     price: 500,
     discount: 0,
     outOfStock: false,
-    image: `${prefix}${count}.jpg`,
+    image: 'https://images.unsplash.com/photo-1562564055-71e051d33c19?q=80&w=400&auto=format&fit=crop',
     subtitle: 'High quality custom print design'
   });
-  localStorage.setItem('shahid_products', JSON.stringify(products));
+  localStorage.setItem('shahid_products_262980034', JSON.stringify(products));
   showToast('New design type added!');
   openAdminPanel();
 }
@@ -991,7 +1046,7 @@ function deleteTypeItem(pIdx, vIdx) {
   }
   if(confirm('Are you sure you want to delete this type?')) {
     products[pIdx].variants.splice(vIdx, 1);
-    localStorage.setItem('shahid_products', JSON.stringify(products));
+    localStorage.setItem('shahid_products_262980034', JSON.stringify(products));
     showToast('Type deleted.');
     openAdminPanel();
   }
@@ -1000,7 +1055,7 @@ function deleteTypeItem(pIdx, vIdx) {
 function addNewProduct() {
   const name = document.getElementById('newProdName').value.trim();
   const minQty = parseInt(document.getElementById('newProdMin').value) || 1;
-  const prefix = document.getElementById('newProdImgPrefix').value.trim() || 'images/custom/';
+  const prefix = document.getElementById('newProdImgPrefix').value.trim() || 'https://images.unsplash.com/photo-';
   
   if(!name) {
     alert('Please enter a product name.');
@@ -1010,12 +1065,11 @@ function addNewProduct() {
   const newProductObj = {
     name: name,
     minQty: minQty,
-    imagePrefix: prefix,
-    variants: makeVariants(prefix, 10, 500)
+    variants: makeVariants(10, 500)
   };
   
   products.push(newProductObj);
-  localStorage.setItem('shahid_products', JSON.stringify(products));
+  localStorage.setItem('shahid_products_262980034', JSON.stringify(products));
   document.getElementById('newProdName').value = '';
   showToast('New product added successfully!');
   openAdminPanel();
@@ -1028,7 +1082,7 @@ function deleteProduct(pIdx) {
   }
   if(confirm(`Are you sure you want to delete "${products[pIdx].name}" completely?`)) {
     products.splice(pIdx, 1);
-    localStorage.setItem('shahid_products', JSON.stringify(products));
+    localStorage.setItem('shahid_products_262980034', JSON.stringify(products));
     showToast('Product deleted successfully.');
     openAdminPanel();
   }
@@ -1036,24 +1090,31 @@ function deleteProduct(pIdx) {
 
 function saveDeliveryFee() {
   deliveryFee = parseFloat(document.getElementById('adminDeliveryFeeInput').value) || 250;
-  localStorage.setItem('shahid_delivery_fee', deliveryFee);
+  localStorage.setItem('shahid_delivery_fee_262980034', deliveryFee);
   document.getElementById('deliveryChargeLabel').textContent = `Rs. ${deliveryFee}`;
   showToast('Delivery fee updated successfully!');
 }
 
 function saveExtraInnerPrice() {
   extraInnerPrice = parseFloat(document.getElementById('adminExtraInnerPriceInput').value) || 25;
-  localStorage.setItem('shahid_extra_inner_price', extraInnerPrice);
+  localStorage.setItem('shahid_extra_inner_price_262980034', extraInnerPrice);
   updateExtraInnerLabel();
   calculateTotal();
   showToast('Extra inner price updated successfully!');
+}
+
+function saveHeroBanner() {
+  heroBannerImg = document.getElementById('adminHeroBannerInput').value.trim();
+  localStorage.setItem('shahid_hero_banner_262980034', heroBannerImg);
+  initHeroBanner();
+  showToast('Hero banner image updated successfully!');
 }
 
 function saveDailyFeatured() {
   dailyFeatured.image = document.getElementById('adminDailyImgInput').value.trim();
   dailyFeatured.title = document.getElementById('adminDailyTitleInput').value.trim();
   dailyFeatured.desc = document.getElementById('adminDailyDescInput').value.trim();
-  localStorage.setItem('shahid_daily', JSON.stringify(dailyFeatured));
+  localStorage.setItem('shahid_daily_262980034', JSON.stringify(dailyFeatured));
   initDailyFeatured();
   showToast('Daily showcase updated successfully!');
 }
@@ -1062,7 +1123,7 @@ function updateAdminPassword() {
   const newPass = document.getElementById('newAdminPasswordInput').value.trim();
   if(newPass) {
     adminPass = newPass;
-    localStorage.setItem('shahid_admin_pass', adminPass);
+    localStorage.setItem('shahid_admin_pass_262980034', adminPass);
     document.getElementById('newAdminPasswordInput').value = '';
     showToast('Admin password updated successfully!');
   } else {
@@ -1105,7 +1166,7 @@ function closeOrderHistoryModal() {
 function deleteOrder(idx) {
   if(confirm('Are you sure you want to delete this order record?')) {
     ordersList.splice(idx, 1);
-    localStorage.setItem('shahid_orders', JSON.stringify(ordersList));
+    localStorage.setItem('shahid_orders_262980034', JSON.stringify(ordersList));
     openOrderHistoryModal();
     showToast('Order record deleted.');
   }
@@ -1114,7 +1175,7 @@ function deleteOrder(idx) {
 function clearAllOrders() {
   if(confirm('Are you sure you want to delete ALL order history?')) {
     ordersList = [];
-    localStorage.setItem('shahid_orders',JSON.stringify(ordersList));
+    localStorage.setItem('shahid_orders_262980034',JSON.stringify(ordersList));
     openOrderHistoryModal();
     showToast('All order history cleared.');
   }
