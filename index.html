@@ -216,7 +216,7 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
       <div class="side-item"><b>Stickers & Name Plates</b><span>Calculated per Square Inch</span></div>
       <div class="side-item" style="background:#fff7ed; padding:12px; border-radius:10px; border:1px solid #ffedd5; margin-top:10px;">
         <b style="color:#c2410c;">⚠️ 60% Advance Policy</b>
-        <span style="color:#9a3412; font-weight:bold; display:block; margin-top:4px;">ہر قسم کے کام میں 60% ایڈوانس لازمی ہے۔ اگر 60% سے کم ایڈوانس موصول ہوا تو آرڈر کنفرم نہیں ہوگا اور کام شروع نہیں کیا जाएगा۔</span>
+        <span style="color:#9a3412; font-weight:bold; display:block; margin-top:4px;">ہر قسم کے کام میں 60% ایڈوانس لازمی ہے۔ اگر 60% سے کم ایڈوانس موصول ہوا تو آرڈر کنفرم نہیں ہوگا اور کام شروع نہیں کیا جائے گا۔</span>
       </div>
       <div class="side-item" style="background:#f0fdf4; padding:12px; border-radius:10px; border:1px solid #bbf7d0; margin-top:10px;">
         <b style="color:#15803d;">📞 Local Call Contacts</b>
@@ -245,7 +245,7 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
           <span id="extraInnerLabelText">✨ کیا آپ کو اضافی انر (Extra Inner) چاہیے؟ (قیمت: Rs. 25 فی انر × مقدار)</span>
         </label>
         <div style="font-size:12px; color:#b45309; margin-top:4px; margin-left:28px;">
-          اضافی انر کی قیمت کل بل میں خود بخود شامل کر دی जाएगी۔
+          اضافی انر کی قیمت کل بل میں خود بخود شامل کر دی جائے گی۔
         </div>
       </div>
 
@@ -371,7 +371,7 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
       </div>
 
       <div style="background:#27272a; padding:12px; border-radius:8px; color:#facc15; font-size:13px; text-align:center; font-weight:bold; border:1px solid #eab308;">
-        ⚠️ <b>اہم اصول:</b> 60% سے کم ایڈوانس ہونے پر آرڈر کنفرم نہیں کیا जाएगा।
+        ⚠️ <b>اہم اصول:</b> 60% سے کم ایڈوانس ہونے پر آرڈر کنفرم نہیں کیا جائے گا۔
       </div>
     </div>
 
@@ -460,7 +460,7 @@ section{padding:82px 0}.section-head{text-align:center;max-width:780px;margin:0 
 <div class="toast" id="toast"></div>
 
 <script>
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyKS3xlpU0G6v5KrJJy3AouFgENhoSERlJBHKUy07RYzF2hNREu31g2zb8uogBCwSCG/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwCfIhb_RIyHU4QdTaivW07uibowrp8SgsdEyzcpMc8uPV7IqBgzO-r7m25a0tjyX-o/exec';
 
 // Reliable default images using Unsplash direct links so they load on all computers instantly
 const makeVariants=(count=10,base=500)=>Array.from({length:count},(_,i)=>({
@@ -535,6 +535,7 @@ let dailyFeatured = JSON.parse(localStorage.getItem('shahid_daily_262980034')) |
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  fetchGlobalSettings();
   initHeroBanner();
   initDailyFeatured();
   renderServices();
@@ -557,6 +558,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+function fetchGlobalSettings() {
+  if(!GOOGLE_SCRIPT_URL) return;
+  fetch(GOOGLE_SCRIPT_URL)
+    .then(res => res.json())
+    .then(data => {
+      if(data && Object.keys(data).length > 0) {
+        if(data.heroBanner) {
+          heroBannerImg = data.heroBanner;
+          localStorage.setItem('shahid_hero_banner_262980034', heroBannerImg);
+          initHeroBanner();
+        }
+        if(data.deliveryFee) {
+          deliveryFee = Number(data.deliveryFee);
+          localStorage.setItem('shahid_delivery_fee_262980034', deliveryFee);
+          document.getElementById('deliveryChargeLabel').textContent = `Rs. ${deliveryFee}`;
+        }
+        if(data.extraInnerPrice) {
+          extraInnerPrice = Number(data.extraInnerPrice);
+          localStorage.setItem('shahid_extra_inner_price_262980034', extraInnerPrice);
+          updateExtraInnerLabel();
+        }
+      }
+    })
+    .catch(err => console.log('Global settings fetch note:', err));
+}
+
+function syncSettingToCloud(key, value) {
+  if(!GOOGLE_SCRIPT_URL) return;
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({type: 'SAVE_SETTINGS', key: key, value: value})
+  }).catch(err => console.log('Cloud sync error:', err));
+}
 
 function initHeroBanner() {
   document.getElementById('heroBannerImg').src = heroBannerImg;
@@ -1092,6 +1129,7 @@ function saveDeliveryFee() {
   deliveryFee = parseFloat(document.getElementById('adminDeliveryFeeInput').value) || 250;
   localStorage.setItem('shahid_delivery_fee_262980034', deliveryFee);
   document.getElementById('deliveryChargeLabel').textContent = `Rs. ${deliveryFee}`;
+  syncSettingToCloud('deliveryFee', deliveryFee);
   showToast('Delivery fee updated successfully!');
 }
 
@@ -1100,6 +1138,7 @@ function saveExtraInnerPrice() {
   localStorage.setItem('shahid_extra_inner_price_262980034', extraInnerPrice);
   updateExtraInnerLabel();
   calculateTotal();
+  syncSettingToCloud('extraInnerPrice', extraInnerPrice);
   showToast('Extra inner price updated successfully!');
 }
 
@@ -1107,6 +1146,7 @@ function saveHeroBanner() {
   heroBannerImg = document.getElementById('adminHeroBannerInput').value.trim();
   localStorage.setItem('shahid_hero_banner_262980034', heroBannerImg);
   initHeroBanner();
+  syncSettingToCloud('heroBanner', heroBannerImg);
   showToast('Hero banner image updated successfully!');
 }
 
